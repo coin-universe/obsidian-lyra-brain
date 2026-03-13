@@ -175,6 +175,51 @@ export class BrainClient {
 		return res.rows.map((r) => this.parseObject(r[0]));
 	}
 
+	async updateStatus(objectId: string, newStatus: string): Promise<boolean> {
+		const now = new Date().toISOString().replace("T", " ").slice(0, 19);
+		const res = await this.cypher(
+			`MATCH (o:Object) WHERE o.id = $id
+			 SET o.status = $status, o.modified = timestamp($now)
+			 RETURN o.name`,
+			{ id: objectId, status: newStatus, now: now }
+		);
+		return res.rows.length > 0;
+	}
+
+	async updateDescription(objectId: string, description: string): Promise<boolean> {
+		const now = new Date().toISOString().replace("T", " ").slice(0, 19);
+		const res = await this.cypher(
+			`MATCH (o:Object) WHERE o.id = $id
+			 SET o.description = $desc, o.modified = timestamp($now)
+			 RETURN o.name`,
+			{ id: objectId, desc: description, now: now }
+		);
+		return res.rows.length > 0;
+	}
+
+	async deleteObject(objectId: string): Promise<boolean> {
+		// Delete all connections first, then the object
+		await this.cypher(
+			`MATCH (a:Object)-[c:Connection]-(b:Object) WHERE a.id = $id DELETE c`,
+			{ id: objectId }
+		);
+		const res = await this.cypher(
+			`MATCH (o:Object) WHERE o.id = $id DELETE o RETURN true`,
+			{ id: objectId }
+		);
+		return true;
+	}
+
+	async deleteConnection(fromId: string, relation: string, toId: string): Promise<boolean> {
+		await this.cypher(
+			`MATCH (a:Object)-[c:Connection]->(b:Object)
+			 WHERE a.id = $fromId AND b.id = $toId AND c.relation = $rel
+			 DELETE c`,
+			{ fromId, toId, rel: relation }
+		);
+		return true;
+	}
+
 	private parseObject(raw: any): BrainObject {
 		return {
 			id: raw.id || "",

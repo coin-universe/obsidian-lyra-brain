@@ -407,3 +407,124 @@
 .lyra-test-fail {
 	color: #e74c3c;
 }
+
+/* ============================================
+   Phase 2 — Edit & Delete
+   ============================================ */
+
+.lyra-detail-actions {
+	margin-left: auto;
+	display: flex;
+	gap: 4px;
+}
+
+.lyra-btn-delete {
+	color: var(--text-faint);
+}
+.lyra-btn-delete:hover {
+	color: #e74c3c;
+	background: rgba(231, 76, 60, 0.1);
+}
+
+.lyra-btn-edit {
+	color: var(--text-faint);
+}
+.lyra-btn-edit:hover {
+	color: var(--lyra-crimson);
+	background: rgba(201, 30, 58, 0.1);
+}
+
+.lyra-section-header {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.lyra-section-header h4 {
+	margin: 0;
+}
+
+.lyra-text-faint {
+	color: var(--text-faint);
+	font-style: italic;
+}
+
+/* Status dropdown */
+.lyra-status-select {
+	padding: 2px 8px;
+	border-radius: 10px;
+	font-size: 12px;
+	font-weight: 500;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--background-secondary);
+	color: var(--text-normal);
+	cursor: pointer;
+}
+.lyra-status-select:focus {
+	border-color: var(--lyra-crimson);
+	outline: none;
+}
+
+/* Connection delete button */
+.lyra-btn-conn-delete {
+	color: var(--text-faint);
+	opacity: 0;
+	transition: opacity 0.15s;
+	padding: 2px;
+}
+.lyra-conn-row:hover .lyra-btn-conn-delete {
+	opacity: 1;
+}
+.lyra-btn-conn-delete:hover {
+	color: #e74c3c;
+}
+
+/* Modal buttons */
+.lyra-modal-buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 16px;
+}
+
+.lyra-btn-danger {
+	background: #e74c3c;
+	color: white;
+	border: none;
+	padding: 6px 16px;
+	border-radius: 6px;
+	cursor: pointer;
+}
+.lyra-btn-danger:hover {
+	background: #c0392b;
+}
+
+.lyra-btn-primary {
+	background: var(--lyra-crimson);
+	color: white;
+	border: none;
+	padding: 6px 16px;
+	border-radius: 6px;
+	cursor: pointer;
+}
+.lyra-btn-primary:hover {
+	background: var(--lyra-crimson-dim);
+}
+
+/* Edit textarea */
+.lyra-edit-textarea {
+	width: 100%;
+	min-height: 150px;
+	padding: 8px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	background: var(--background-primary);
+	color: var(--text-normal);
+	font-size: 14px;
+	line-height: 1.5;
+	resize: vertical;
+	font-family: inherit;
+}
+.lyra-edit-textarea:focus {
+	border-color: var(--lyra-crimson);
+	outline: none;
+}
