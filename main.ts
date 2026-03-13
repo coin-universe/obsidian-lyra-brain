@@ -35,6 +35,17 @@ export default class LyraBrainPlugin extends Plugin {
 			name: "Open Lyra Brain",
 			callback: () => this.activateBrainView(),
 		});
+
+	}
+
+	refreshBrainView() {
+		const leaves = this.app.workspace.getLeavesOfType(BRAIN_VIEW_TYPE);
+		for (const leaf of leaves) {
+			const view = leaf.view as BrainView;
+			if (view?.refresh) {
+				view.refresh();
+			}
+		}
 	}
 
 	async activateBrainView() {

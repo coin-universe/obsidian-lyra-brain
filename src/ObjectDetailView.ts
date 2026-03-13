@@ -243,6 +243,7 @@ export class ObjectDetailView extends ItemView {
 			const newStatus = statusSelect.value;
 			await this.plugin.client.updateStatus(obj.id, newStatus);
 			await this.loadAndRender();
+			this.plugin.refreshBrainView();
 		});
 
 		// Description (with edit button)
@@ -354,6 +355,7 @@ export class ObjectDetailView extends ItemView {
 				async () => {
 					await this.plugin.client.deleteConnection(fromId, conn.relation, toId);
 					await this.loadAndRender();
+					this.plugin.refreshBrainView();
 				}
 			).open();
 		});
@@ -362,7 +364,7 @@ export class ObjectDetailView extends ItemView {
 	private confirmDelete(obj: BrainObject) {
 		new ConfirmDeleteModal(this.app, obj.name, async () => {
 			await this.plugin.client.deleteObject(obj.id);
-			// Go back — close this leaf
+			this.plugin.refreshBrainView();
 			this.leaf.detach();
 		}).open();
 	}
@@ -371,6 +373,7 @@ export class ObjectDetailView extends ItemView {
 		new EditDescriptionModal(this.app, obj.description, async (newDesc) => {
 			await this.plugin.client.updateDescription(obj.id, newDesc);
 			await this.loadAndRender();
+			this.plugin.refreshBrainView();
 		}).open();
 	}
 
