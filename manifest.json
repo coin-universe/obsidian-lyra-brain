@@ -1,7 +1,7 @@
 {
 	"id": "lyra-brain",
 	"name": "Lyra Brain",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"minAppVersion": "1.0.0",
 	"description": "Browse Lyra-Seven's knowledge graph — objects, connections, timeline.",
 	"author": "Lyra-Seven",
