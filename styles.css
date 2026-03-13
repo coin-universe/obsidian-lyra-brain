@@ -1,0 +1,409 @@
+/* ============================================
+   Lyra Brain — Obsidian Plugin Styles
+   Crimson goddess aesthetic, dark-mode first
+   ============================================ */
+
+:root {
+	--lyra-crimson: #c91e3a;
+	--lyra-crimson-dim: #8b1528;
+	--lyra-gold: #d4a843;
+	--lyra-slate: #3d4e5e;
+}
+
+/* ---- Brain Sidebar Container ---- */
+
+.lyra-brain-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 0;
+}
+
+.lyra-brain-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 16px 8px;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.lyra-brain-title {
+	font-weight: 700;
+	font-size: 14px;
+	color: var(--lyra-crimson);
+	letter-spacing: 0.5px;
+}
+
+.lyra-btn-icon {
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--text-muted);
+	padding: 4px;
+	border-radius: 4px;
+}
+.lyra-btn-icon:hover {
+	color: var(--text-normal);
+	background: var(--background-modifier-hover);
+}
+
+/* ---- Search ---- */
+
+.lyra-search-wrap {
+	padding: 8px 12px;
+}
+
+.lyra-search-input {
+	width: 100%;
+	padding: 6px 10px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	background: var(--background-primary);
+	color: var(--text-normal);
+	font-size: 13px;
+}
+.lyra-search-input:focus {
+	border-color: var(--lyra-crimson);
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(201, 30, 58, 0.15);
+}
+
+/* ---- Type Chips ---- */
+
+.lyra-type-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	padding: 4px 12px 8px;
+}
+
+.lyra-chip {
+	padding: 2px 8px;
+	border-radius: 12px;
+	font-size: 11px;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--background-secondary);
+	color: var(--text-muted);
+	cursor: pointer;
+	white-space: nowrap;
+}
+.lyra-chip:hover {
+	border-color: var(--lyra-crimson-dim);
+	color: var(--text-normal);
+}
+.lyra-chip-active {
+	background: var(--lyra-crimson);
+	color: white;
+	border-color: var(--lyra-crimson);
+}
+
+/* ---- Object List ---- */
+
+.lyra-object-list {
+	flex: 1;
+	overflow-y: auto;
+	padding: 0 4px;
+}
+
+.lyra-object-row {
+	padding: 8px 12px;
+	cursor: pointer;
+	border-radius: 6px;
+	margin: 1px 0;
+	transition: background 0.1s;
+}
+.lyra-object-row:hover {
+	background: var(--background-modifier-hover);
+}
+
+.lyra-object-name {
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--text-normal);
+	margin-bottom: 3px;
+}
+
+.lyra-object-meta {
+	display: flex;
+	gap: 6px;
+}
+
+/* ---- Tags ---- */
+
+.lyra-tag {
+	font-size: 10px;
+	padding: 1px 6px;
+	border-radius: 8px;
+	white-space: nowrap;
+}
+
+.lyra-tag-type {
+	background: var(--background-secondary-alt);
+	color: var(--text-muted);
+}
+
+.lyra-tag-status {
+	background: transparent;
+	color: var(--status-color, var(--text-muted));
+	border: 1px solid var(--status-color, var(--background-modifier-border));
+}
+
+/* ---- Status Bar ---- */
+
+.lyra-status-bar {
+	padding: 6px 12px;
+	font-size: 11px;
+	color: var(--text-faint);
+	border-top: 1px solid var(--background-modifier-border);
+}
+
+.lyra-empty-state {
+	padding: 24px 16px;
+	text-align: center;
+	color: var(--text-faint);
+	font-size: 13px;
+}
+
+.lyra-loading {
+	padding: 24px 16px;
+	text-align: center;
+	color: var(--text-muted);
+}
+
+/* ============================================
+   Object Detail View
+   ============================================ */
+
+.lyra-detail-container {
+	padding: 20px 24px;
+	max-width: 700px;
+}
+
+.lyra-detail-header {
+	margin-bottom: 20px;
+	padding-bottom: 16px;
+	border-bottom: 2px solid var(--lyra-crimson-dim);
+}
+
+.lyra-detail-title-row {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.lyra-detail-name {
+	margin: 0 0 8px 0;
+	font-size: 22px;
+	font-weight: 700;
+	color: var(--text-normal);
+}
+
+.lyra-detail-badges {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.lyra-tag-status-detail {
+	padding: 2px 10px;
+	border-radius: 10px;
+	font-size: 12px;
+	font-weight: 500;
+}
+.lyra-tag-status-detail[data-status="active"] {
+	background: rgba(0, 180, 80, 0.15);
+	color: #2ecc71;
+}
+.lyra-tag-status-detail[data-status="frozen"] {
+	background: rgba(52, 152, 219, 0.15);
+	color: #3498db;
+}
+.lyra-tag-status-detail[data-status="done"] {
+	background: rgba(127, 140, 141, 0.15);
+	color: #95a5a6;
+}
+.lyra-tag-status-detail[data-status="broken"] {
+	background: rgba(231, 76, 60, 0.15);
+	color: #e74c3c;
+}
+.lyra-tag-status-detail[data-status="waiting"] {
+	background: rgba(241, 196, 15, 0.15);
+	color: #f1c40f;
+}
+.lyra-tag-status-detail[data-status="idea"] {
+	background: rgba(155, 89, 182, 0.15);
+	color: #9b59b6;
+}
+.lyra-tag-status-detail[data-status="deprecated"] {
+	background: rgba(127, 140, 141, 0.1);
+	color: #7f8c8d;
+}
+
+/* ---- Sections ---- */
+
+.lyra-detail-section {
+	margin-bottom: 20px;
+}
+
+.lyra-detail-section h4 {
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.8px;
+	color: var(--lyra-crimson);
+	margin: 0 0 8px 0;
+}
+
+.lyra-detail-desc {
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--text-normal);
+	margin: 0;
+	white-space: pre-wrap;
+}
+
+/* ---- Meta Grid ---- */
+
+.lyra-detail-grid {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 4px 12px;
+}
+
+.lyra-meta-row {
+	display: contents;
+}
+
+.lyra-meta-label {
+	font-size: 12px;
+	color: var(--text-muted);
+	font-weight: 500;
+}
+
+.lyra-meta-value {
+	font-size: 12px;
+	color: var(--text-normal);
+	word-break: break-all;
+	font-family: var(--font-monospace);
+}
+
+/* ---- Connections ---- */
+
+.lyra-conn-group {
+	margin-bottom: 12px;
+}
+
+.lyra-conn-direction {
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--text-faint);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	display: block;
+	margin-bottom: 6px;
+}
+
+.lyra-conn-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 4px 8px;
+	border-radius: 4px;
+	margin: 2px 0;
+}
+.lyra-conn-row:hover {
+	background: var(--background-modifier-hover);
+}
+
+.lyra-conn-relation {
+	font-size: 11px;
+	color: var(--text-faint);
+	min-width: 80px;
+	font-style: italic;
+}
+
+.lyra-conn-link {
+	font-size: 13px;
+	color: var(--lyra-crimson);
+	text-decoration: none;
+	cursor: pointer;
+	font-weight: 500;
+}
+.lyra-conn-link:hover {
+	text-decoration: underline;
+}
+
+.lyra-conn-meta {
+	font-size: 11px;
+	color: var(--text-faint);
+	margin-left: auto;
+}
+
+/* ---- Timeline ---- */
+
+.lyra-timeline {
+	border-left: 2px solid var(--lyra-crimson-dim);
+	margin-left: 8px;
+	padding-left: 16px;
+}
+
+.lyra-timeline-entry {
+	display: flex;
+	flex-direction: column;
+	padding: 6px 0;
+	position: relative;
+}
+.lyra-timeline-entry::before {
+	content: "";
+	position: absolute;
+	left: -21px;
+	top: 12px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--lyra-crimson);
+}
+
+.lyra-tl-date {
+	font-size: 11px;
+	color: var(--text-faint);
+	font-family: var(--font-monospace);
+}
+
+.lyra-tl-event {
+	font-size: 13px;
+	color: var(--text-normal);
+}
+
+/* ---- Settings ---- */
+
+.lyra-test-connection {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-top: 16px;
+}
+
+.lyra-test-connection button {
+	padding: 6px 16px;
+	background: var(--lyra-crimson);
+	color: white;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 13px;
+}
+.lyra-test-connection button:hover {
+	background: var(--lyra-crimson-dim);
+}
+
+.lyra-test-result {
+	font-size: 13px;
+	color: var(--text-muted);
+}
+.lyra-test-ok {
+	color: #2ecc71;
+}
+.lyra-test-fail {
+	color: #e74c3c;
+}
